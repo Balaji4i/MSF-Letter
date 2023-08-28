@@ -1,0 +1,12 @@
+//Groovy Scripts for model.vo.MsfLetter_VO
+
+package model.vo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="MsfRequestDate")
+def MsfRequestDate_ExpressionScript_Expression()
+{
+adf.currentDate
+}
+

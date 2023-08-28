@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SearchMSFPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MsfLetter_VO" RangeSize="5" DataControl="Oando_AMDataControl" Refresh="ifNeeded" id="MsfLetter_VOIterator"/>
+    <searchRegion Criteria="SearchVc" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="MsfLetter_VOIterator" id="SearchVcQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="MsfRequestId">
+      <AttrNames>
+        <Item Value="MsfRequestId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="MsfLetter_VOIterator" id="Delete" InstanceName="Oando_AMDataControl.MsfLetter_VO"
+            DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="MsfLetter_VOIterator" id="MsfLetter_VO">
+      <nodeDefinition DefName="model.vo.MsfLetter_VO" Name="MsfLetter_VO0">
+        <AttrNames>
+          <Item Value="MsfRequestNo"/>
+          <Item Value="MsfRecipientName"/>
+          <Item Value="BankName"/>
+          <Item Value="Group_Trns"/>
+          <Item Value="ApprovalStatus"/>
+          <Item Value="Comments"/>
+          <Item Value="RequestType"/>
+          <Item Value="MsfRequestDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

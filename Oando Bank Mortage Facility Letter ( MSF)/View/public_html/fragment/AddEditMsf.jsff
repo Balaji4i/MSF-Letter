@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox text="Oando Bank/MSF Letter" id="pb1" showDisclosure="false">            
+              
+                <af:spacer width="10" height="20" id="s3"/>
+                <f:facet name="toolbar">
+                    <af:panelGroupLayout id="pgl2" layout="horizontal" halign="right">
+                        <af:button text="Save &amp; Close" id="b3"
+                                   disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                   action="#{backingBeanScope.AddEditMSF.onClickSaveAction}"/>
+                        <af:spacer width="10" height="10" id="s2"/>
+                        <af:button text="Submit" id="b6" 
+                                  disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                   action="#{backingBeanScope.AddEditMSF.onClickSubmitAction}"/>
+                        <af:spacer width="10" height="10" id="s4"/>
+                        <af:button text="Cancel" id="b1" actionListener="#{backingBeanScope.AddEditMSF.onClickCancel}"
+                                   immediate="true" action="back"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+               <af:spacer width="10" height="20" id="s1"/>
+                <af:panelFormLayout id="pfl2" maxColumns="2" rows="4" fieldWidth="400px" labelWidth="200px">
+                    <af:inputText value="#{bindings.MsfRequestNo.inputValue}" label="Request No" readOnly="true"
+                                  contentStyle="width:250px;" required="#{bindings.MsfRequestNo.hints.mandatory}"
+                                  columns="#{bindings.MsfRequestNo.hints.displayWidth}"
+                                  maximumLength="#{bindings.MsfRequestNo.hints.precision}"
+                                  shortDesc="#{bindings.MsfRequestNo.hints.tooltip}" id="it14">
+                        <f:validator binding="#{bindings.MsfRequestNo.validator}"/>
+                    </af:inputText>
+                    <!--<af:inputText value="#{bindings.ApprovalStatus.inputValue}" contentStyle="width:250px;"
+                                      label="#{bindings.ApprovalStatus.hints.label}"
+                                      required="#{bindings.ApprovalStatus.hints.mandatory}"
+                                      columns="#{bindings.ApprovalStatus.hints.displayWidth}"
+                                      maximumLength="#{bindings.ApprovalStatus.hints.precision}"
+                                      shortDesc="#{bindings.ApprovalStatus.hints.tooltip}" id="it1" readOnly="true">
+                            <f:validator binding="#{bindings.ApprovalStatus.validator}"/>
+                        </af:inputText>-->
+                    <af:inputText value="#{bindings.Name_Trns.inputValue}" contentStyle="width:250px;"
+                                  label="Employee Name" required="#{bindings.Name_Trns.hints.mandatory}"
+                                  columns="#{bindings.Name_Trns.hints.displayWidth}"
+                                  maximumLength="#{bindings.Name_Trns.hints.precision}"
+                                  shortDesc="#{bindings.Name_Trns.hints.tooltip}" id="it2" readOnly="true">
+                        <f:validator binding="#{bindings.Name_Trns.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Number_Trns.inputValue}" label="Employee Number"
+                                  contentStyle="width:250px;" required="#{bindings.Number_Trns.hints.mandatory}"
+                                  columns="#{bindings.Number_Trns.hints.displayWidth}"
+                                  maximumLength="#{bindings.Number_Trns.hints.precision}"
+                                  shortDesc="#{bindings.Number_Trns.hints.tooltip}" id="it3" readOnly="true">
+                        <f:validator binding="#{bindings.Number_Trns.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Email_Trns.inputValue}" contentStyle="width:250px;"
+                                  label="Email Address" required="#{bindings.Email_Trns.hints.mandatory}"
+                                  columns="#{bindings.Email_Trns.hints.displayWidth}"
+                                  maximumLength="#{bindings.Email_Trns.hints.precision}"
+                                  shortDesc="#{bindings.Email_Trns.hints.tooltip}" id="it7" readOnly="true">
+                        <f:validator binding="#{bindings.Email_Trns.validator}"/>
+                    </af:inputText>
+                    <af:selectOneChoice value="#{bindings.BankLetter.inputValue}" label="Bank Letter" autoSubmit="true"
+                                        contentStyle="width:50px;" required="true" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                        shortDesc="#{bindings.BankLetter.hints.tooltip}" id="soc1">
+                        <f:selectItems value="#{bindings.BankLetter.items}" id="si1"/>
+                        <f:validator binding="#{bindings.BankLetter.validator}"/>
+                    </af:selectOneChoice>
+                    <af:inputText value="#{bindings.Group_Trns.inputValue}" label="Business Group"
+                                  contentStyle="width:250px;" required="#{bindings.Group_Trns.hints.mandatory}"
+                                  columns="#{bindings.Group_Trns.hints.displayWidth}"
+                                  maximumLength="#{bindings.Group_Trns.hints.precision}"
+                                  shortDesc="#{bindings.Group_Trns.hints.tooltip}" id="it8" readOnly="true">
+                        <f:validator binding="#{bindings.Group_Trns.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Trans_Cadre.inputValue}" label="Cadre" contentStyle="width:250px;"
+                                  required="#{bindings.Trans_Cadre.hints.mandatory}"
+                                  columns="#{bindings.Trans_Cadre.hints.displayWidth}"
+                                  maximumLength="#{bindings.Trans_Cadre.hints.precision}"
+                                  shortDesc="#{bindings.Trans_Cadre.hints.tooltip}" id="it9" readOnly="true">
+                        <f:validator binding="#{bindings.Trans_Cadre.validator}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.MsfRequestDate.inputValue}" contentStyle="width:250px;"
+                                  label="Creation Date" required="#{bindings.MsfRequestDate.hints.mandatory}"
+                                  columns="#{bindings.MsfRequestDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.MsfRequestDate.hints.tooltip}" id="id1" readOnly="true">
+                        <f:validator binding="#{bindings.MsfRequestDate.validator}"/>
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:spacer width="10" height="30" id="s5"/>
+                    <af:selectOneChoice value="#{bindings.MsfLetter.inputValue}" label="MSF Letter" required="true" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                        contentStyle="width:50px;" shortDesc="#{bindings.MsfLetter.hints.tooltip}"
+                                        id="soc2" autoSubmit="true"
+                                        valueChangeListener="#{backingBeanScope.AddEditMSF.loanAmountMand}">
+                        <f:selectItems value="#{bindings.MsfLetter.items}" id="si2"/>
+                        <f:validator binding="#{bindings.MsfLetter.validator}"/>
+                    </af:selectOneChoice>
+                </af:panelFormLayout>
+              
+               <af:spacer width="10" height="20" id="s6"/>
+                <af:panelFormLayout id="pfl1" maxColumns="2" rows="6" fieldWidth="400px" labelWidth="200px">
+                    <af:inputText value="#{bindings.MsfRecipientName.inputValue}" label="Recipient's Name"
+                                  contentStyle="width:250px;" required="true" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  columns="#{bindings.MsfRecipientName.hints.displayWidth}"
+                                  maximumLength="#{bindings.MsfRecipientName.hints.precision}" autoSubmit="true"
+                                  shortDesc="#{bindings.MsfRecipientName.hints.tooltip}" id="it4">
+                        <f:validator binding="#{bindings.MsfRecipientName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.MsfRecipientDesignation.inputValue}" label="Recipient's Designation"
+                                  required="true" contentStyle="width:250px;" autoSubmit="true"
+                                  columns="#{bindings.MsfRecipientDesignation.hints.displayWidth}" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  maximumLength="#{bindings.MsfRecipientDesignation.hints.precision}"
+                                  shortDesc="#{bindings.MsfRecipientDesignation.hints.tooltip}" id="it13">
+                        <f:validator binding="#{bindings.MsfRecipientDesignation.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.BankName.inputValue}" label="Bank Name" required="true"
+                                  contentStyle="width:250px;" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  columns="#{bindings.BankName.hints.displayWidth}" autoSubmit="true"
+                                  maximumLength="#{bindings.BankName.hints.precision}"
+                                  shortDesc="Bank name should be in full" id="it6">
+                        <f:validator binding="#{bindings.BankName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.BankAccNumber.inputValue}" label="Bank Account Number"
+                                  contentStyle="width:250px;" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  required="#{bindings.BankAccNumber.hints.mandatory}" autoSubmit="true"
+                                  columns="#{bindings.BankAccNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.BankAccNumber.hints.precision}"
+                                  shortDesc="#{bindings.BankAccNumber.hints.tooltip}" id="it18">
+                        <f:validator binding="#{bindings.BankAccNumber.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.BankAccNumber.inputValue}" rendered="false"
+                                  label="#{bindings.BankAccNumber.hints.label}"
+                                  required="#{bindings.BankAccNumber.hints.mandatory}"
+                                  columns="#{bindings.BankAccNumber.hints.displayWidth}"
+                                  maximumLength="#{bindings.BankAccNumber.hints.precision}"
+                                  shortDesc="#{bindings.BankAccNumber.hints.tooltip}" id="it19">
+                        <f:validator binding="#{bindings.BankAccNumber.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.BankAddress1.inputValue}" label="Recipient's Address Line 1"
+                                  contentStyle="width:250px;" required="true" rows="4" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  columns="#{bindings.BankAddress1.hints.displayWidth}" autoSubmit="true"
+                                  maximumLength="#{bindings.BankAddress1.hints.precision}"
+                                  shortDesc="#{bindings.BankAddress1.hints.tooltip}" id="it10">
+                        <f:validator binding="#{bindings.BankAddress1.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.LoanAmount.inputValue}"
+                                  visible="#{bindings.MsfLetter.inputValue eq 'YES'}" label="Loan Amount"
+                                  contentStyle="width:250px;" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  partialTriggers="soc2" required="#{bindings.MsfLetter.inputValue eq 'YES'}"
+                                  columns="#{bindings.LoanAmount.hints.displayWidth}" autoSubmit="true"
+                                  maximumLength="#{bindings.LoanAmount.hints.precision}"
+                                  binding="#{backingBeanScope.AddEditMSF.loanAmount}"
+                                  shortDesc="#{bindings.LoanAmount.hints.tooltip}" id="it16">
+                        <f:validator binding="#{bindings.LoanAmount.validator}"/>
+                        <af:convertNumber pattern="###,###,###,###" minFractionDigits="2" maxFractionDigits="2"/>
+                    </af:inputText>
+                    <af:panelLabelAndMessage label="Loan Amount" id="plam1"
+                                             visible="#{bindings.MsfLetter.inputValue eq 'YES'}" partialTriggers="soc2"
+                                             rendered="false">
+                        <af:inputText value="#{bindings.LoanAmount.inputValue}" contentStyle="width:250px;" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                      shortDesc="#{bindings.LoanAmount.hints.tooltip}" id="ot2">
+                            <af:convertNumber pattern="###,###,###,###" minFractionDigits="2" maxFractionDigits="2"/>
+                        </af:inputText>
+                    </af:panelLabelAndMessage>
+                    <af:inputText value="#{bindings.EntitledAmount.inputValue}" disabled="true"
+                                  visible="#{bindings.MsfLetter.inputValue eq 'YES'}" partialTriggers="soc2"
+                                  label="Entitled Amount" required="#{bindings.EntitledAmount.hints.mandatory}"
+                                  columns="#{bindings.EntitledAmount.hints.displayWidth}" contentStyle="width:250px;"
+                                  maximumLength="#{bindings.EntitledAmount.hints.precision}"
+                                  shortDesc="#{bindings.EntitledAmount.hints.tooltip}" id="it1" autoSubmit="true">
+                        <f:validator binding="#{bindings.EntitledAmount.validator}"/>
+                        <af:convertNumber pattern="###,###,###,###" minFractionDigits="2" maxFractionDigits="2"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.ApprovalStatus.inputValue}" label="Approver Status" rendered="false"
+                                  contentStyle="width:250px;" required="true" readOnly="true"
+                                  columns="#{bindings.ApprovalStatus.hints.displayWidth}"
+                                  maximumLength="#{bindings.ApprovalStatus.hints.precision}"
+                                  shortDesc="#{bindings.ApprovalStatus.hints.tooltip}" id="it5">
+                        <f:validator binding="#{bindings.ApprovalStatus.validator}"/>
+                    </af:inputText>
+                    <!--<af:panelLabelAndMessage label="Approver Comments" id="plam6">
+                            <af:outputText value="#{bindings.ApproverComments.inputValue}"
+                                           shortDesc="#{bindings.ApproverComments.hints.tooltip}" id="ot7"/>
+                        </af:panelLabelAndMessage>-->
+                    <af:panelLabelAndMessage label="Entitled Amount" id="plam2"
+                                             visible="#{bindings.MsfLetter.inputValue eq 'YES'}" partialTriggers="soc2"
+                                             rendered="false">
+                        <af:outputText value="#{bindings.EntitledAmount.inputValue}" rendered="false"
+                                       shortDesc="#{bindings.EntitledAmount.hints.tooltip}" id="ot3">
+                            <af:convertNumber pattern="###,###,###,###"/>
+                        </af:outputText>
+                    </af:panelLabelAndMessage>
+                    <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
+                                  required="false" rows="5" contentStyle="width:250px;"
+                                  columns="#{bindings.Comments.hints.displayWidth}" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED'
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  maximumLength="#{bindings.Comments.hints.precision}" autoSubmit="true"
+                                  shortDesc="#{bindings.Comments.hints.tooltip}" id="it12">
+                        <f:validator binding="#{bindings.Comments.validator}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.LoanEffectiveDate.inputValue}" label="Loan Effective Date"
+                                  contentStyle="width:250px;" required="true" autoSubmit="true"
+                                  visible="#{bindings.MsfLetter.inputValue eq 'YES'}" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  columns="#{bindings.LoanEffectiveDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.LoanEffectiveDate.hints.tooltip}" id="id2"
+                                  minValue="#{bindings.MsfRequestDate.inputValue}"
+                                  binding="#{backingBeanScope.AddEditMSF.loandEffectiveDate}" partialTriggers="soc2">
+                        <f:validator binding="#{bindings.LoanEffectiveDate.validator}"/>
+                      
+                    </af:inputDate>
+                    <af:panelLabelAndMessage label="Status" id="plam3">
+                        <af:outputText value="#{bindings.ApprovalStatus.inputValue}"
+                                       inlineStyle="color:#{(bindings.ApprovalStatus.inputValue eq 'UNSUBSCRIBED')?'red': (bindings.ApprovalStatus.inputValue eq 'SUBMITTED')?'green':(bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL')?'orange':(bindings.ApprovalStatus.inputValue eq 'DRAFT') ? 'black' : 'red'};"
+                                       shortDesc="#{bindings.ApprovalStatus.hints.tooltip}" id="ot4"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText value="#{bindings.BankAddress2.inputValue}" label="Recipient's Address Line 2"
+                                  contentStyle="width:250px;" rows="4" disabled="#{bindings.ApprovalStatus.inputValue eq 'SUBMITTED FOR APPROVAL' 
+                                      || bindings.ApprovalStatus.inputValue eq 'APPROVED' 
+                                      || bindings.ApprovalStatus.inputValue eq 'REJECTED'? true : false}"
+                                  columns="#{bindings.BankAddress2.hints.displayWidth}" autoSubmit="true"
+                                  maximumLength="#{bindings.BankAddress2.hints.precision}"
+                                  shortDesc="#{bindings.BankAddress2.hints.tooltip}" id="it11">
+                        <f:validator binding="#{bindings.BankAddress2.validator}"/>
+                    </af:inputText>
+                    <af:panelLabelAndMessage label="Previous Approver" id="plam5" rendered="false">
+                        <af:outputText value="#{bindings.PreviousApprover.inputValue}" rendered="false"
+                                       shortDesc="#{bindings.PreviousApprover.hints.tooltip}" id="ot6"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Next Approver" id="plam4" rendered="false">
+                        <af:outputText value="#{bindings.NextApprover.inputValue}" rendered="false"
+                                       shortDesc="#{bindings.NextApprover.hints.tooltip}" id="ot5"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText value="#{bindings.ApproverComments.inputValue}" readOnly="true"
+                                  label="Approver Comments" contentStyle="width:250px;"
+                                  required="#{bindings.ApproverComments.hints.mandatory}" rendered="false"
+                                  columns="#{bindings.ApproverComments.hints.displayWidth}"
+                                  maximumLength="#{bindings.ApproverComments.hints.precision}"
+                                  shortDesc="#{bindings.ApproverComments.hints.tooltip}" id="it15" rows="5">
+                        <f:validator binding="#{bindings.ApproverComments.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.GrossSalary.inputValue}" label="#{bindings.GrossSalary.hints.label}"
+                                  rendered="false" required="#{bindings.GrossSalary.hints.mandatory}"
+                                  columns="#{bindings.GrossSalary.hints.displayWidth}"
+                                  maximumLength="#{bindings.GrossSalary.hints.precision}"
+                                  shortDesc="#{bindings.GrossSalary.hints.tooltip}" id="it17">
+                        <f:validator binding="#{bindings.GrossSalary.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.GrossSalary.format}"/>
+                    </af:inputText>
+                </af:panelFormLayout>
+            </af:panelBox>
+                       
+            
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LookupValues_EO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="XXFND_LOOKUP_VALUES"
+  AliasName="LookupValues_EO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="LookupValueId"
+    IsNotNull="true"
+    ColumnName="LOOKUP_VALUE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXFND_LOOKUP_VALUES"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="LookupTypeId"
+    IsNotNull="true"
+    ColumnName="LOOKUP_TYPE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXFND_LOOKUP_VALUES"/>
+  <Attribute
+    Name="LookupValueCode"
+    Precision="30"
+    ColumnName="LOOKUP_VALUE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LookupValueNameDisp"
+    IsNotNull="true"
+    Precision="240"
+    ColumnName="LOOKUP_VALUE_NAME_DISP"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LookupValueNameDispTl"
+    Precision="240"
+    ColumnName="LOOKUP_VALUE_NAME_DISP_TL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AccessLevel"
+    Precision="240"
+    ColumnName="ACCESS_LEVEL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LookupAddlValue"
+    Precision="4000"
+    ColumnName="LOOKUP_ADDL_VALUE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActiveYn"
+    Precision="1"
+    ColumnName="ACTIVE_YN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    Precision="60"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXFND_LOOKUP_VALUES"/>
+  <Attribute
+    Name="LastUpdatedBy"
+    Precision="60"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="XXFND_LOOKUP_VALUES"/>
+  <Attribute
+    Name="LastUpdateLogin"
+    Precision="150"
+    ColumnName="LAST_UPDATE_LOGIN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="XXFND_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ParentValueId"
+    ColumnName="PARENT_VALUE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXFND_LOOKUP_VALUES"/>
+  <Attribute
+    Name="DisplayOrder"
+    ColumnName="DISPLAY_ORDER"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="XXFND_LOOKUP_VALUES"/>
+  <Key
+    Name="LookupvaluesEoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="LOOKUPVALUES_EO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.LookupValues_EO.LookupValueId"/>
+    </AttrArray>
+  </Key>
+</Entity>

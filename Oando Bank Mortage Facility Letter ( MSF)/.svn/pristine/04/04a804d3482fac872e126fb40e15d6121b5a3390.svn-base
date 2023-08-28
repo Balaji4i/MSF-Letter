@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="AddEditMSF_BTF">
+    <default-activity>router1</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__14">
+      <name>mode</name>
+      <value>#{pageFlowScope.mode}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__15">
+      <name>headerId</name>
+      <value>#{pageFlowScope.headerId}</value>
+      <class>java.math.BigDecimal</class>
+    </input-parameter-definition>
+    <managed-bean id="__12">
+      <managed-bean-name>AddEditMSF</managed-bean-name>
+      <managed-bean-class>view.AddEditMSF</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <router id="router1">
+      <?audit suppress oracle.ide.xml.validation-incomplete?>
+      <case id="__10">
+        <expression>#{pageFlowScope.mode eq 'add'}</expression>
+        <outcome>add</outcome>
+      </case>
+      <case id="__11">
+        <expression>#{pageFlowScope.mode eq 'edit'}</expression>
+        <outcome>edit</outcome>
+      </case>
+      <default-outcome>add</default-outcome>
+    </router>
+    <view id="AddEditMsf">
+      <page>/fragment/AddEditMsf.jsff</page>
+    </view>
+    <task-flow-return id="back">
+      <outcome>
+        <name>back</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SetOrgId">
+      <method>#{backingBeanScope.AddEditMSF.setOrgId}</method>
+      <outcome>
+        <fixed-outcome>set</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__13">
+        <from-outcome>add</from-outcome>
+        <to-activity-id>SetOrgId</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>AddEditMsf</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>AddEditMsf</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>back</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>SetOrgId</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>set</from-outcome>
+        <to-activity-id>AddEditMsf</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

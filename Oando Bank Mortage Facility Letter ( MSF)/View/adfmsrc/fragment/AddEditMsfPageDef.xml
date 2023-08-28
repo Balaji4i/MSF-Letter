@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditMsfPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MsfLetter_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="MsfLetter_VOIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="ApprovalStatus">
+      <AttrNames>
+        <Item Value="ApprovalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="Name_Trns">
+      <AttrNames>
+        <Item Value="Name_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="Number_Trns">
+      <AttrNames>
+        <Item Value="Number_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="Email_Trns">
+      <AttrNames>
+        <Item Value="Email_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="Group_Trns">
+      <AttrNames>
+        <Item Value="Group_Trns"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="Trans_Cadre">
+      <AttrNames>
+        <Item Value="Trans_Cadre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="MsfRequestDate">
+      <AttrNames>
+        <Item Value="MsfRequestDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="MsfLetter_VOIterator" StaticList="false" Uses="LOV_BankLetter" id="BankLetter"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="MsfLetter_VOIterator" StaticList="false" Uses="LOV_MsfLetter" id="MsfLetter"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="MsfRecipientName">
+      <AttrNames>
+        <Item Value="MsfRecipientName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="LoanEffectiveDate">
+      <AttrNames>
+        <Item Value="LoanEffectiveDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="BankName">
+      <AttrNames>
+        <Item Value="BankName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="BankAddress1">
+      <AttrNames>
+        <Item Value="BankAddress1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="BankAddress2">
+      <AttrNames>
+        <Item Value="BankAddress2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="LoanAmount">
+      <AttrNames>
+        <Item Value="LoanAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="EntitledAmount">
+      <AttrNames>
+        <Item Value="EntitledAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="NextApprover">
+      <AttrNames>
+        <Item Value="NextApprover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="PreviousApprover">
+      <AttrNames>
+        <Item Value="PreviousApprover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="ApproverComments">
+      <AttrNames>
+        <Item Value="ApproverComments"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="MsfRecipientDesignation">
+      <AttrNames>
+        <Item Value="MsfRecipientDesignation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="MsfRequestNo">
+      <AttrNames>
+        <Item Value="MsfRequestNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="GrossSalary">
+      <AttrNames>
+        <Item Value="GrossSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MsfLetter_VOIterator" id="BankAccNumber">
+      <AttrNames>
+        <Item Value="BankAccNumber"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
